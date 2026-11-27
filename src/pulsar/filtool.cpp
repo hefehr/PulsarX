@@ -15,6 +15,7 @@
 #include "dedisperse.h"
 #include "databuffer.h"
 #include "patch.h"
+#include "patchfallback.h"
 #include "preprocesslite.h"
 #include "flip.h"
 #include "filmaker.h"
@@ -251,7 +252,7 @@ int main(int argc, const char *argv[])
 
 		databuf.counter += ndump;
 
-		DataBuffer<float> *data = patch.filter(databuf);
+		DataBuffer<float> *data = PulsarX::filter_patch_with_fallback(patch, databuf);
 		if (vm.count("flip")) data = flip.filter(*data);
 		data = prep.run(*data);
 

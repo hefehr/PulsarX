@@ -13,3 +13,7 @@ chop8_SOURCES=chop8.cpp
 pulsar_injector_SOURCES=pulsar_injector.cpp
 genstat_SOURCES=genstat.cpp
 psrheader_SOURCES=psrheader.cpp
+
+check_PROGRAMS=test_patchfallback
+TESTS=$(check_PROGRAMS)
+test_patchfallback_SOURCES=test_patchfallback.cpp

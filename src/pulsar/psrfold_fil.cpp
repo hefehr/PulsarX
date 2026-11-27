@@ -40,6 +40,7 @@
 #include "preprocesslite.h"
 #include "baseline.h"
 #include "patch.h"
+#include "patchfallback.h"
 #include "psrfitsreader.h"
 #include "filterbankreader.h"
 
@@ -483,7 +484,7 @@ int main(int argc, const char *argv[])
 
 		databuf.counter += ndump;
 
-		DataBuffer<float> *data = patch.filter(databuf);
+		DataBuffer<float> *data = PulsarX::filter_patch_with_fallback(patch, databuf);
 		
 		data = prep.run(*data);
 

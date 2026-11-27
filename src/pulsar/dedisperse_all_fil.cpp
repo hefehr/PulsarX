@@ -23,6 +23,7 @@
 #include "utils.h"
 #include "mjd.h"
 #include "patch.h"
+#include "patchfallback.h"
 #include "preprocesslite.h"
 #include "logging.h"
 #include "psrfitsreader.h"
@@ -277,7 +278,7 @@ int main(int argc, const char *argv[])
 		ntot += ndump;
 		count += ndump;
 
-		patch.filter(databuf);
+		PulsarX::filter_patch_with_fallback(patch, databuf);
 		prep.run(databuf);
 		for (auto sp=search.begin(); sp!=search.end(); ++sp)
 		{
